@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Gubed GTK
+Exec=gbdclient-gtk
+Icon=gubed.png
+Type=Application
+Comment=Gubed PHP debuger (GTK)
+Categories=GTK;Development;WebDevelopment;
+# vi:encoding=utf-8
