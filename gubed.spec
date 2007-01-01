@@ -8,10 +8,10 @@
 Summary:	Gubed - a PHP debuger
 Name:		gubed
 Version:	0.2.2
-Release:	0.5
+Release:	0.6
 License:	GPL
 Group:		Development/Languages/PHP
-Source0:	http://dl.sourceforge.net/sourceforge/gubed/Gubed%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/gubed/Gubed%{version}.tar.gz
 # Source0-md5:	16c5b36c24f701aaf5d5e8a553b7341e
 Source1:	%{name}-gtk.desktop
 Source2:	%{name}-x11.desktop
@@ -21,11 +21,11 @@ URL:		http://gubed.mccabe.nu/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.268
 %{?with_gtk2:BuildRequires:	wxGTK2-devel}
 %{?with_x11univ:BuildRequires:	wxX11-devel}
-BuildRequires:	rpmbuild(macros) >= 1.268
-Requires:	webapps
 Requires(triggerpostun):	sed >= 4.0
+Requires:	webapps
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_webapps	/etc/webapps
@@ -68,6 +68,16 @@ Gubed PHP debugger - server part.
 %setup -q -n Gubed
 %patch0 -p1
 
+%if %{with server}
+cat > apache.conf <<'EOF'
+Alias /%{name} %{_appdir}/ServerScripts
+<Directory %{_appdir}>
+	Order Allow,Deny
+	Allow from all
+</Directory>
+EOF
+%endif
+
 %build
 %if %{with gtk2}
 cp -af Client{,-gtk2}
@@ -106,7 +116,8 @@ cd Proxy
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure 
+%configure
+
 %{__make}
 cd ..
 %endif
@@ -145,21 +156,13 @@ cd ..
 %endif
 
 %if %{with server}
-cat > apache.conf <<'EOF'
-Alias /%{name} %{_appdir}/ServerScripts
-<Directory %{_appdir}>
-	Order Allow,Deny
-	Allow from all
-</Directory>
-EOF
-
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_appdir}}
-
 install apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 install apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 
 cp -a ServerScripts $RPM_BUILD_ROOT%{_appdir}
 mv -f $RPM_BUILD_ROOT%{_appdir}/ServerScripts/localsettings_dist.php $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.php
+%endif
 
 %triggerin server -- apache1 < 1.3.37-3, apache1-base
 %webapp_register apache %{_webapp}
@@ -172,7 +175,6 @@ mv -f $RPM_BUILD_ROOT%{_appdir}/ServerScripts/localsettings_dist.php $RPM_BUILD_
 
 %triggerun server -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
-%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -196,6 +198,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/gbdproxy
 
+%if %{with server}
 %files server
 %defattr(644,root,root,755)
 %dir %attr(750,root,http) %{_sysconfdir}
@@ -203,3 +206,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*.php
 %{_appdir}
+%endif
