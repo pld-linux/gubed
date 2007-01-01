@@ -1,0 +1,5 @@
+- finished: added server subpkg. with server side scripts
+- works with php-4.4.4
+- with php-5.2.0 doesn't work - msg. from gubed client window:
+  20:13:57: Welcome to Gubed PHP Debugger
+  20:14:08: Warning: , line , error :
