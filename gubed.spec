@@ -6,6 +6,7 @@
 %bcond_without	server	# don't build server
 #
 Summary:	Gubed - a PHP debuger
+Summary(pl):	Gubed - debugger dla PHP
 Name:		gubed
 Version:	0.2.2
 Release:	0.6
@@ -36,33 +37,52 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Gubed PHP debuger.
 
+%description -l pl
+Gubed - debugger dla PHP.
+
 %package client-gtk2
-Summary:	Gubed debugger - client with GTK2 interface
+Summary:	Gubed PHP debugger - client with GTK+ 2 interface
+Summary(pl):	Debugger PHP Gubed - klient z interfejsem GTK+ 2
 Group:		Development/Languages/PHP
 
 %description client-gtk2
 Gubed PHP debugger - client with GTK2 interface.
 
+%description client-gtk2 -l pl
+Debugger PHP Gubed - klient z interfejsem GTK+ 2.
+
 %package client-x11
 Summary:	Gubed PHP debugger - client with x11univ interface
+Summary(pl):	Debugger PHP Gubed - klient z interfejsem x11univ
 Group:		Development/Languages/PHP
 
 %description client-x11
 Gubed PHP debugger - client with x11univ interface.
 
+%description client-x11 -l pl
+Debugger PHP Gubed - klient z interfejsem x11univ.
+
 %package proxy
-Summary:	Gubed debugger - proxy server
+Summary:	Gubed PHP debugger - proxy server
+Summary(pl):	Debugger PHP Gubed - serwer proxy
 Group:		Development/Languages/PHP
 
 %description proxy
 Gubed PHP debugger - proxy server.
 
+%description proxy -l pl
+Debugger PHP Gubed - serwer proxy.
+
 %package server
 Summary:	Gubed server part
+Summary(pl):	Czê¶æ serwerowa Gubeda
 Group:		Development/Languages/PHP
 
 %description server
 Gubed PHP debugger - server part.
+
+%description server -l pl
+Debugger PHP Gubed - czê¶æ serwerowa.
 
 %prep
 %setup -q -n Gubed
@@ -164,6 +184,9 @@ cp -a ServerScripts $RPM_BUILD_ROOT%{_appdir}
 mv -f $RPM_BUILD_ROOT%{_appdir}/ServerScripts/localsettings_dist.php $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.php
 %endif
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %triggerin server -- apache1 < 1.3.37-3, apache1-base
 %webapp_register apache %{_webapp}
 
@@ -175,9 +198,6 @@ mv -f $RPM_BUILD_ROOT%{_appdir}/ServerScripts/localsettings_dist.php $RPM_BUILD_
 
 %triggerun server -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
