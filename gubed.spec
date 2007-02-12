@@ -6,7 +6,7 @@
 %bcond_without	server	# don't build server
 #
 Summary:	Gubed - a PHP debuger
-Summary(pl):	Gubed - debugger dla PHP
+Summary(pl.UTF-8):   Gubed - debugger dla PHP
 Name:		gubed
 Version:	0.2.2
 Release:	0.6
@@ -37,52 +37,52 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Gubed PHP debuger.
 
-%description -l pl
+%description -l pl.UTF-8
 Gubed - debugger dla PHP.
 
 %package client-gtk2
 Summary:	Gubed PHP debugger - client with GTK+ 2 interface
-Summary(pl):	Debugger PHP Gubed - klient z interfejsem GTK+ 2
+Summary(pl.UTF-8):   Debugger PHP Gubed - klient z interfejsem GTK+ 2
 Group:		Development/Languages/PHP
 
 %description client-gtk2
 Gubed PHP debugger - client with GTK2 interface.
 
-%description client-gtk2 -l pl
+%description client-gtk2 -l pl.UTF-8
 Debugger PHP Gubed - klient z interfejsem GTK+ 2.
 
 %package client-x11
 Summary:	Gubed PHP debugger - client with x11univ interface
-Summary(pl):	Debugger PHP Gubed - klient z interfejsem x11univ
+Summary(pl.UTF-8):   Debugger PHP Gubed - klient z interfejsem x11univ
 Group:		Development/Languages/PHP
 
 %description client-x11
 Gubed PHP debugger - client with x11univ interface.
 
-%description client-x11 -l pl
+%description client-x11 -l pl.UTF-8
 Debugger PHP Gubed - klient z interfejsem x11univ.
 
 %package proxy
 Summary:	Gubed PHP debugger - proxy server
-Summary(pl):	Debugger PHP Gubed - serwer proxy
+Summary(pl.UTF-8):   Debugger PHP Gubed - serwer proxy
 Group:		Development/Languages/PHP
 
 %description proxy
 Gubed PHP debugger - proxy server.
 
-%description proxy -l pl
+%description proxy -l pl.UTF-8
 Debugger PHP Gubed - serwer proxy.
 
 %package server
 Summary:	Gubed server part
-Summary(pl):	Czê¶æ serwerowa Gubeda
+Summary(pl.UTF-8):   CzÄ™Å›Ä‡ serwerowa Gubeda
 Group:		Development/Languages/PHP
 
 %description server
 Gubed PHP debugger - server part.
 
-%description server -l pl
-Debugger PHP Gubed - czê¶æ serwerowa.
+%description server -l pl.UTF-8
+Debugger PHP Gubed - czÄ™Å›Ä‡ serwerowa.
 
 %prep
 %setup -q -n Gubed
