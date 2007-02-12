@@ -6,7 +6,7 @@
 %bcond_without	server	# don't build server
 #
 Summary:	Gubed - a PHP debuger
-Summary(pl.UTF-8):   Gubed - debugger dla PHP
+Summary(pl.UTF-8):	Gubed - debugger dla PHP
 Name:		gubed
 Version:	0.2.2
 Release:	0.6
@@ -42,7 +42,7 @@ Gubed - debugger dla PHP.
 
 %package client-gtk2
 Summary:	Gubed PHP debugger - client with GTK+ 2 interface
-Summary(pl.UTF-8):   Debugger PHP Gubed - klient z interfejsem GTK+ 2
+Summary(pl.UTF-8):	Debugger PHP Gubed - klient z interfejsem GTK+ 2
 Group:		Development/Languages/PHP
 
 %description client-gtk2
@@ -53,7 +53,7 @@ Debugger PHP Gubed - klient z interfejsem GTK+ 2.
 
 %package client-x11
 Summary:	Gubed PHP debugger - client with x11univ interface
-Summary(pl.UTF-8):   Debugger PHP Gubed - klient z interfejsem x11univ
+Summary(pl.UTF-8):	Debugger PHP Gubed - klient z interfejsem x11univ
 Group:		Development/Languages/PHP
 
 %description client-x11
@@ -64,7 +64,7 @@ Debugger PHP Gubed - klient z interfejsem x11univ.
 
 %package proxy
 Summary:	Gubed PHP debugger - proxy server
-Summary(pl.UTF-8):   Debugger PHP Gubed - serwer proxy
+Summary(pl.UTF-8):	Debugger PHP Gubed - serwer proxy
 Group:		Development/Languages/PHP
 
 %description proxy
@@ -75,7 +75,7 @@ Debugger PHP Gubed - serwer proxy.
 
 %package server
 Summary:	Gubed server part
-Summary(pl.UTF-8):   Część serwerowa Gubeda
+Summary(pl.UTF-8):	Część serwerowa Gubeda
 Group:		Development/Languages/PHP
 
 %description server
