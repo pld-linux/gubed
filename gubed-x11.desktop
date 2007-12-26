@@ -1,8 +1,7 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Gubed X11
 Exec=gbdclient-x11
-Icon=gubed.png
+Icon=gubed
 Type=Application
 Comment=Gubed - PHP debuger (X11)
 Categories=GTK;Development;WebDevelopment;
