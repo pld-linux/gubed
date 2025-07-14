@@ -86,7 +86,7 @@ Debugger PHP Gubed - część serwerowa.
 
 %prep
 %setup -q -n Gubed
-%patch0 -p1
+%patch -P0 -p1
 
 %if %{with server}
 cat > apache.conf <<'EOF'
